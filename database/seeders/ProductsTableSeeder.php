@@ -14,6 +14,12 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory(30)->create();
+        Product::factory(10)->create();
+
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->addMediaFromUrl('https://via.placeholder.com/640x480.png/00aa00?text=veniam')
+                ->toMediaCollection('products');
+        }
     }
 }

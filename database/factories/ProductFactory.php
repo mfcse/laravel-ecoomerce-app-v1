@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class ProductFactory extends Factory
 {
@@ -22,10 +24,10 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'category_id' => random_int(1, 10),
+            'category_id' => Category::all()->random()->id,
             'title' => $this->faker->name(),
-            'description' => $this->faker->text(50),
-            'price' => $this->faker->randomNumber(),
+            'description' => $this->faker->realText(150),
+            'price' => random_int(100, 2000),
         ];
     }
 }
