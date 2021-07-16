@@ -28,6 +28,7 @@ class ProductFactory extends Factory
             'title' => $this->faker->name(),
             'description' => $this->faker->realText(150),
             'price' => random_int(100, 2000),
+            'sale_price' => random_int(0, 2000)
         ];
     }
 }
