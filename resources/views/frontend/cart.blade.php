@@ -49,15 +49,16 @@
                     <tr>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td>Total</td>
                         <td>BDT {{number_format($total,2)}}</td>
-                        <td></td>
                     </tr>
                 </tbody>
             
             </table>
 
-            <a href="{{route('cart.clear')}}" class="alert alert-danger">Clear</a>
+            <a href="{{route('cart.clear')}}" class="btn btn-danger">Clear</a>
+            <a href="{{route('checkout')}}" class="btn btn-success">Procees to CheckOut</a>
             @endif
            
         </div>
