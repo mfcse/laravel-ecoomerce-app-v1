@@ -9,7 +9,8 @@
      <div class="alert alert-info">
         You need to <a href="{{route('login')}}">Login</a> first to complete your order
     </div>
-    @else   
+    @endguest
+    @auth   
     <div class="alert alert-info">
         You are ordering as {{ auth()->user()->name }}
     </div>
@@ -164,7 +165,7 @@
           </form>
         </div>
     
-    @endguest
+    @endauth
      
  </div>
      

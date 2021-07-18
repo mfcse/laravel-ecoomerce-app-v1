@@ -44,5 +44,6 @@ Route::namespace('Frontend')->group(function () {
         Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
         Route::post('/order', [CartController::class, 'processOrder'])->name('order');
+        Route::get('/order/{id}', [CartController::class, 'showOrder'])->name('order.details');
     });
 });
