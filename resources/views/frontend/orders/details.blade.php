@@ -13,12 +13,14 @@
         <div class="col-md-6">
             <ul class="list-group">
                 @foreach ($order->toArray() as $column=>$value)
-                @if ($column==='user_id')
-                    @continue
-                @endif
-                <li class="list-group-item"><strong>{{ucwords(str_replace('_',' ',$column))}}:</strong> {{$value}}</li>
-                    
+                @if (is_string($value))
+                    @if ($column==='user_id')
+                        @continue
+                    @endif
+                    <li class="list-group-item"><strong>{{ucwords(str_replace('_',' ',$column))}}:</strong> {{$value}}</li>
+                @endif   
                 @endforeach
+                
                 {{-- <li class="list-group-item">Customer Name: {{$order->customer_name}}</li>
                 <li class="list-group-item">Customer Phone Number: {{$order->customer_phone_number}}</li>
                 <li class="list-group-item">Address: {{$order->address}}</li>
@@ -41,8 +43,8 @@
                     {{-- {{dd($order->products)}} --}}
                     @foreach ($order->products as $product)
                     <tr>
-                        {{dd($product->order)}}
-                        <td>{{$product->products->title}}</td>
+                        {{-- {{dd($product->order)}} --}}
+                        <td>{{$product->product->title}}</td>
                         <td>{{$product->quantity}}</td>
                         <td>{{number_format($product->price,2)}}</td>
                     </tr>
