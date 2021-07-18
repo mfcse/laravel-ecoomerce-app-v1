@@ -1,6 +1,8 @@
 @extends('frontend.layouts.master')
 @section('main')
  <div class="container mb-5">
+
+    @include('frontend.partials.frontend._message')
     <h3 class="text-center mt-5 mb-5">
         Order Details
     </h3>

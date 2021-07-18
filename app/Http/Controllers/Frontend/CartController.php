@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Notifications\EmailOrderNotification;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -138,11 +139,13 @@ class CartController extends Controller
                 ]);
             }
 
+            auth()->user()->notify(new EmailOrderNotification($order));
+
             session()->forget(['total', 'cart']);
 
             $this->setSuccess('Order placed successfully');
 
-            return redirect('/');
+            return redirect()->route('order.details', $order->id);
         } catch (Exception $e) {
 
             $this->setDanger($e->getMessage());
